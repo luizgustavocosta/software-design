@@ -1,5 +1,7 @@
 #URL-SHORTENING
 
+[![Build Status](https://travis-ci.org/luizgustavocosta/software-design.svg?branch=master)](https://travis-ci.org/luizgustavocosta/software-design)
+
 ## Definition
 Used to create shorter aliases for URLs, such as bit.ly, tinyurl.com
 
