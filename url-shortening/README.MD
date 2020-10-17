@@ -1,6 +1,6 @@
-#URL-SHORTENING
+# URL-SHORTENING
 
-[![Build Status](https://travis-ci.org/luizgustavocosta/software-design.svg?branch=master)](https://travis-ci.org/luizgustavocosta/software-design)
+[![Build Status](https://github.com/luizgustavocosta/software-design/workflows/Java%20CI%20with%20Maven/badge.svg)](https://github.com/luizgustavocosta/software-design/actions)
 
 ## Definition
 Used to create shorter aliases for URLs, such as bit.ly, tinyurl.com
