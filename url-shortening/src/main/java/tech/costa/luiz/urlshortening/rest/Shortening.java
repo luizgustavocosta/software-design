@@ -1,4 +1,4 @@
-package tech.costa.luiz.urlshortening.controller;
+package tech.costa.luiz.urlshortening.rest;
 
 import org.springframework.web.bind.annotation.RestController;
 
