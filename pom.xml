@@ -5,6 +5,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>url-shortening</module>
+        <module>cards</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
