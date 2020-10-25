@@ -1,6 +1,7 @@
 package tech.costa.luiz.cards;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The type Hand.
@@ -9,7 +10,10 @@ import java.util.ArrayList;
  */
 public class Hand<T extends Card> {
 
-    private ArrayList<T> cards = new ArrayList<>();
+    /**
+     * The Cards.
+     */
+    protected List<T> cards = new ArrayList<>();
 
     /**
      * Score int.
@@ -31,5 +35,14 @@ public class Hand<T extends Card> {
      */
     public void addCard(T card) {
         cards.add(card);
+    }
+
+    /**
+     * Print.
+     */
+    public void print() {
+        for (T card : cards) {
+            System.out.println(card);
+        }
     }
 }

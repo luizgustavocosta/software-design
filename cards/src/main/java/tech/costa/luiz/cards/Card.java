@@ -55,11 +55,39 @@ public abstract class Card {
     }
 
     /**
-     * Sets available.
-     *
-     * @param available the available
+     * Mark available.
      */
-    public void setAvailable(boolean available) {
-        this.available = available;
+    public void markAvailable() {
+        available = true;
+    }
+
+    /**
+     * Mark unavailable.
+     */
+    public void markUnavailable() {
+        available = false;
+    }
+
+    /**
+     * Print.
+     */
+    public void print() {
+        String[] faceValues = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
+        System.out.print(faceValues[faceValue - 1]);
+        switch (suit) {
+            case CLUB:
+                System.out.print("c");
+                break;
+            case HEART:
+                System.out.print("h");
+                break;
+            case DIAMOND:
+                System.out.print("d");
+                break;
+            case SPADE:
+                System.out.print("s");
+                break;
+        }
+        System.out.print(" ");
     }
 }

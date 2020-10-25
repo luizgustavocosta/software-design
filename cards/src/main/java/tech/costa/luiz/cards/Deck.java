@@ -1,16 +1,17 @@
 package tech.costa.luiz.cards;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * The type Deck.
  *
  * @param <T> the type parameter
  */
-public class Deck <T extends Card> {
+public class Deck<T extends Card> {
 
-    private ArrayList<T> cards;
+    private List<T> cards;
     private int deltaIndex;
 
     /**
@@ -18,7 +19,7 @@ public class Deck <T extends Card> {
      *
      * @param cards the cards
      */
-    public void setDeckOfCards(ArrayList<T> cards) {
+    public void setDeckOfCards(List<T> cards) {
         this.cards = cards;
     }
 
@@ -26,7 +27,16 @@ public class Deck <T extends Card> {
      * Shuffle.
      */
     public void shuffle() {
-        throw new UnsupportedOperationException();
+        for (int index = 0; index < cards.size(); index++) {
+            int origin = index;
+            int bound = cards.size() - index - 1;
+            if (bound < origin) bound=origin+1;
+            int changePosition = ThreadLocalRandom.current().nextInt(origin, bound);
+            T card = cards.get(index);
+            T otherCard = cards.get(changePosition);
+            cards.set(index, otherCard);
+            cards.set(changePosition, card);
+        }
     }
 
     /**
@@ -45,7 +55,20 @@ public class Deck <T extends Card> {
      * @return the t [ ]
      */
     public T[] deltaHand(int number) {
-        throw new UnsupportedOperationException();
+        if (remainingCards() < number) {
+            return null;
+        }
+
+        T[] hand = (T[]) new Card[number];
+        int count = 0;
+        while (count < number) {
+            T card = dealCard();
+            if (card != null) {
+                hand[count] = card;
+                count++;
+            }
+        }
+        return hand;
     }
 
     /**
@@ -54,6 +77,21 @@ public class Deck <T extends Card> {
      * @return the t
      */
     public T dealCard() {
-        throw new UnsupportedOperationException();
+        if (remainingCards() == 0) {
+            return null;
+        }
+        T card = cards.get(deltaIndex);
+        card.markUnavailable();
+        deltaIndex++;
+        return card;
+    }
+
+    /**
+     * Print.
+     */
+    public void print() {
+        for (Card card : cards) {
+            card.print();
+        }
     }
 }

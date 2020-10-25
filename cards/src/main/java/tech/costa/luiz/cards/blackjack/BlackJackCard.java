@@ -1,4 +1,7 @@
-package tech.costa.luiz.cards;
+package tech.costa.luiz.cards.blackjack;
+
+import tech.costa.luiz.cards.Card;
+import tech.costa.luiz.cards.Suit;
 
 /**
  * The type Black jack card.
@@ -51,7 +54,20 @@ public class BlackJackCard extends Card {
         return faceValue >= 11 && faceValue <= 13;
     }
 
-    private boolean isAce() {
+    /**
+     * Is ace boolean.
+     *
+     * @return the boolean
+     */
+    public boolean isAce() {
         return faceValue == 1;
+    }
+
+    @Override
+    public String toString() {
+        return "BlackJackCard{" +
+                "faceValue=" + faceValue +
+                ", suit=" + suit +
+                '}';
     }
 }

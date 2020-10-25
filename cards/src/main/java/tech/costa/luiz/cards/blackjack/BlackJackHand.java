@@ -1,4 +1,6 @@
-package tech.costa.luiz.cards;
+package tech.costa.luiz.cards.blackjack;
+
+import tech.costa.luiz.cards.Hand;
 
 import java.util.ArrayList;
 
@@ -24,7 +26,28 @@ public class BlackJackHand extends Hand<BlackJackCard> {
     }
 
     private ArrayList<Integer> possibleScores() {
-        return null;
+        ArrayList<Integer> scores = new ArrayList<>();
+        if (cards.size() == 0) {
+            return scores;
+        }
+        for (BlackJackCard card : cards) {
+            addCardToScoreList(card, scores);
+        }
+        return scores;
+    }
+
+    private void addCardToScoreList(BlackJackCard card, ArrayList<Integer> scores) {
+        if (scores.size() == 0) {
+            scores.add(0);
+        }
+        int length = scores.size();
+        for (int i = 0; i < length; i++) {
+            int score = scores.get(i);
+            scores.set(i, score + card.minValue());
+            if (card.minValue() != card.maxValue()) {
+                scores.add(score + card.maxValue());
+            }
+        }
     }
 
     /**
@@ -47,6 +70,11 @@ public class BlackJackHand extends Hand<BlackJackCard> {
      * @return the boolean
      */
     public boolean isBlackJack(){
-        throw new UnsupportedOperationException();
+        if (cards.size() != 2) { // Need to flip 3 cards
+            return false;
+        }
+        BlackJackCard first = cards.get(0);
+        BlackJackCard second = cards.get(1);
+        return (first.isAce() && second.isFaceCard()) || (second.isAce() && first.isFaceCard());
     }
 }
