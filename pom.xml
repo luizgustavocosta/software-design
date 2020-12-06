@@ -6,6 +6,7 @@
     <modules>
         <module>url-shortening</module>
         <module>cards</module>
+        <module>solid</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
